@@ -33,14 +33,16 @@ public class View1 {
    private Label phone;
    private TextField phoneT;
    private Button add;
-   private Button list;
    private HBox hbBtn;
-   
+   private Stage stage;
    private Text messageT;
    
     
    public View1(){
     
+    stage = new Stage();
+            
+       
     grid = new GridPane();
     grid.setAlignment(Pos.CENTER);
     grid.setHgap(10);
@@ -69,21 +71,19 @@ public class View1 {
     grid.add(phoneT, 1, 3);
     
     add = new Button("Add");
-    list = new Button ("List");
     
-    list.setOnAction(new EventHandler<ActionEvent>() {
+    /*list.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
             View2 v2 = new View2();
-            v2.show(new Stage());
+            v2.show(stage);
             
         }
-    });
+    });*/
     
     hbBtn = new HBox(10);
     hbBtn.setAlignment(Pos.CENTER);
     hbBtn.getChildren().add(add);
-    hbBtn.getChildren().add(list);
     grid.add(hbBtn, 1, 4);
     
     
@@ -95,6 +95,7 @@ public class View1 {
 }   
    
    public void show(Stage stage) {
+      this.stage = stage;
       stage.setTitle("Actividad");
       stage.setScene(scene);
       stage.show();
@@ -119,7 +120,18 @@ public class View1 {
     public Text getMessageT() {
         return messageT;
     }
-   
+
+    public Stage getStage() {
+        return stage;
+    }
+
+
+    public void mostrar(Stage stage){
+        stage.setTitle("Ventana 1");
+        stage.setScene(scene);
+        stage.show();
+    }
+    
 }
 
 
